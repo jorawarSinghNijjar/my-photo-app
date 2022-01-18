@@ -11,6 +11,7 @@ import { CreateAlbumComponent } from './create-album/create-album.component';
 import { AlbumDetailsComponent } from './album-details/album-details.component';
 import { UploadPictureComponent } from './upload-picture/upload-picture.component';
 import { PhotoDetailsComponent } from './photo-details/photo-details.component';
+import { RecentAlbumsComponent } from './recent-albums/recent-albums.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PhotoDetailsComponent } from './photo-details/photo-details.component';
     CreateAlbumComponent,
     AlbumDetailsComponent,
     UploadPictureComponent,
-    PhotoDetailsComponent
+    PhotoDetailsComponent,
+    RecentAlbumsComponent
   ],
   imports: [
     BrowserModule,

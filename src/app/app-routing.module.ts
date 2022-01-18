@@ -7,17 +7,19 @@ import { MyAlbumsComponent } from './my-albums/my-albums.component';
 import { PhotoDetailsComponent } from './photo-details/photo-details.component';
 
 import { ProfileComponent } from './profile/profile.component';
+import { RecentAlbumsComponent } from './recent-albums/recent-albums.component';
 import { UploadPictureComponent } from './upload-picture/upload-picture.component';
 
 
 const routes: Routes = [
-  { path: 'profile', component: ProfileComponent },
+  {path: 'albums/recent', component: RecentAlbumsComponent},
+  { path: 'profile/:profileId', component: ProfileComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'albums', component: MyAlbumsComponent },
-  { path: 'create-album', component: CreateAlbumComponent },
-  { path: 'album-details', component: AlbumDetailsComponent },
-  { path: 'upload-picture', component: UploadPictureComponent },
-  { path: 'photo-details', component: PhotoDetailsComponent },
+  { path: 'albums/me', component: MyAlbumsComponent },
+  { path: 'create', component: CreateAlbumComponent },
+  { path: 'album/:albumId', component: AlbumDetailsComponent },
+  { path: 'upload/:albumId', component: UploadPictureComponent },
+  { path: 'photo/:photoId', component: PhotoDetailsComponent },
 
 ];
 
