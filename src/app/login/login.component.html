@@ -9,7 +9,7 @@
           <a class="nav-link btn" (click)="showSignUpForm()">Sign Up</a>
         </li>
       </ul>
-      <form class="card-body">
+      <div class="card-body">
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label"
             >Email address</label
@@ -19,6 +19,8 @@
             class="form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
+            name="email"
+            [(ngModel)]="email"
           />
           <div id="emailHelp" class="form-text">
             We'll never share your email with anyone else.
@@ -30,6 +32,8 @@
             type="password"
             class="form-control"
             id="exampleInputPassword1"
+            name="password"
+            [(ngModel)]="password"
           />
         </div>
         <div class="mb-3 form-check">
@@ -38,8 +42,8 @@
             >Check me out</label
           >
         </div>
-        <button type="submit" class="btn btn-primary">Sign In</button>
-      </form>
+        <button type="submit" class="btn btn-primary" (click)="signIn()">Sign In</button>
+      </div>
     </div>
   </div>
 </div>
@@ -54,7 +58,7 @@
             <a class="nav-link btn active">Sign Up</a>
           </li>
         </ul>
-        <form class="card-body">
+        <div class="card-body">
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label"
               >Email address</label
@@ -64,6 +68,8 @@
               class="form-control"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
+              name="email"
+              [(ngModel)]="email"
             />
             <div id="emailHelp" class="form-text">
               We'll never share your email with anyone else.
@@ -75,6 +81,8 @@
               type="password"
               class="form-control"
               id="exampleInputPassword1"
+              name="password"
+              [(ngModel)]="password"
             />
           </div>
           <div class="mb-3 form-check">
@@ -83,7 +91,7 @@
               >Check me out</label
             >
           </div>
-          <button type="submit" class="btn btn-primary">Sign Up</button>
-        </form>
+          <button type="submit" class="btn btn-primary" (click)="signUp()">Sign Up</button>
+        </div>
       </div>
 </ng-template>

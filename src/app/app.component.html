@@ -24,6 +24,7 @@
           <a class="nav-link" [routerLink]="['/albums/me']">Albums</a>
         </li>
       </ul>
+      <button type="text" class="btn btn-outline-danger" *ngIf="getAuthStatus()" (click) = "signOut()">Sign Out</button>
     </div>
   </div>
 </nav>

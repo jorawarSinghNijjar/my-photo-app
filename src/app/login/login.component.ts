@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from './../user.service';
 
 @Component({
   selector: 'app-login',
@@ -8,10 +10,19 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
 
   signInForm = true;
+  email: string;
+  password: string;
 
-  constructor() { }
+  constructor(private userService: UserService, private router: Router) { 
+    this.email="";
+    this.password="";
+  }
 
   ngOnInit(): void {
+    if(this.userService.isLoggedIn()){
+      console.log("redirecting...")
+      this.router.navigate(['/']);
+    }
   }
 
   showSignInForm(){
@@ -20,6 +31,22 @@ export class LoginComponent implements OnInit {
 
   showSignUpForm(){
     this.signInForm = false;
+  }
+
+  signUp(){
+    this.userService.signUp(this.email,this.password);
+    this.clearFields();
+  }
+
+  signIn(){
+    this.userService.signIn(this.email,this.password);
+    this.clearFields();
+    this.router.navigate(['/albums/me']);
+  }
+
+  clearFields(){
+    this.email = "";
+    this.password = "";
   }
 
 }
