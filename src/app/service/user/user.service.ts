@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import firebase from 'firebase/compat/app';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -14,16 +15,24 @@ export class UserService {
   constructor(private firebaseAuth: AngularFireAuth) {
     this.user = firebaseAuth.authState;
 
-    this.user.subscribe(user => {
-      if(user){
-        console.log("storing",user)
-        localStorage.setItem('user', JSON.stringify(user));
+    this.user.subscribe(
+      userInfo => {
+        if(userInfo){
+          this.setIdToken(userInfo.getIdToken());
+        }
       }
-      else{
-        localStorage.removeItem('user');
-      }
-    })
+    )
 
+  }
+
+  setIdToken(idToken: Promise<string>){
+    idToken.then(token => {
+      localStorage.setItem('userIdToken',token);
+    })
+    .catch(err => {
+      console.log(err);
+    })
+    
   }
 
   signIn(email: string, password: string) {
@@ -48,6 +57,7 @@ export class UserService {
 
   signOut() {
     this.firebaseAuth.signOut().then(res => {
+      localStorage.clear();
       console.log("Logged out !");
     })
       .catch(err => {
@@ -55,11 +65,11 @@ export class UserService {
       })
   }
 
-  isLoggedIn(): boolean{
-
-    const userString = localStorage.getItem('user');
-    const user = userString != null ? JSON.parse(userString) : null;
-    return user !== null ? true : false;
+  getHeaders() {
+    let headers = new HttpHeaders();
+    let idToken = localStorage.getItem('userIdToken');
+    // return idToken ? headers.append('idToken', idToken) : headers;
+    return idToken ? headers.append('Authorization', `Bearer ${idToken}`) : headers;
   }
 
 }

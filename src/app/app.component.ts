@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { UserService } from './user.service';
+import { UserService } from './service/user/user.service';
+
 
 @Component({
   selector: 'app-root',
@@ -9,16 +10,12 @@ import { UserService } from './user.service';
 export class AppComponent {
   title = 'my_photo_application';
 
-  constructor(private userService: UserService){
+  constructor(public userService: UserService){
 
   }
 
   signOut(){
     this.userService.signOut();
-  
   }
 
-  getAuthStatus(): boolean{
-    return this.userService.isLoggedIn();
-  }
 }

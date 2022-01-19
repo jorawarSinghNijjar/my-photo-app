@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from './../user.service';
+import { UserService } from '../service/user/user.service';
 
 @Component({
   selector: 'app-login',
@@ -19,10 +19,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(this.userService.isLoggedIn()){
-      console.log("redirecting...")
-      this.router.navigate(['/']);
-    }
+   
   }
 
   showSignInForm(){

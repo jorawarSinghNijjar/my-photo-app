@@ -1,1 +1,12 @@
-<p>recent-albums works!</p>
+<h3 class="display-3">Recent Albums</h3>
+<div class="row my-3">
+  <div class="col-sm-4 p-2" *ngFor="let album of albums">
+    <div class="card" style="width: 18rem">
+      <img class="card-img-top" [src]="album.coverPhotoUrl" alt="Card image cap" />
+      <div class="card-body">
+        <h5 class="card-title">{{album.name}}</h5>
+        <a [routerLink]="['/album', album.id]" class="btn btn-primary">Go to Album</a>
+      </div>
+    </div>
+  </div>
+</div>
