@@ -12,10 +12,12 @@ export class LoginComponent implements OnInit {
   signInForm = true;
   email: string;
   password: string;
+  name: string;
 
   constructor(private userService: UserService, private router: Router) { 
     this.email="";
     this.password="";
+    this.name="";
   }
 
   ngOnInit(): void {
@@ -31,14 +33,13 @@ export class LoginComponent implements OnInit {
   }
 
   signUp(){
-    this.userService.signUp(this.email,this.password);
+    this.userService.signUp(this.email,this.password,this.name);
     this.clearFields();
   }
 
   signIn(){
-    this.userService.signIn(this.email,this.password);
+    this.userService.signIn(this.email,this.password)
     this.clearFields();
-    this.router.navigate(['/albums/me']);
   }
 
   clearFields(){

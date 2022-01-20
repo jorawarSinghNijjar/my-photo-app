@@ -13,7 +13,7 @@ export class PhotoService {
   getAll(){
     var headers = this.userService.getHeaders();
     return this.http.get(
-      `${environment.API_URL}/api/photos`,
+      `${environment.API_URL}/photos`,
       {headers}
     );
   }

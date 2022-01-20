@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { PhotoService } from '../service/photo/photo.service';
 
 @Component({
@@ -8,9 +9,19 @@ import { PhotoService } from '../service/photo/photo.service';
 })
 export class AlbumDetailsComponent implements OnInit {
 
-  constructor(private photoService: PhotoService) { }
+  albumId: string | null;
+
+  constructor(private photoService: PhotoService, private route: ActivatedRoute) { 
+    this.albumId = "";
+  }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe(
+      params => {
+        this.albumId = params.get('albumId');
+        console.log("Album ID is: ", this.albumId);
+      }
+    )
     this.photoService.getAll().subscribe(
       response => {
         console.log("Photos", response);

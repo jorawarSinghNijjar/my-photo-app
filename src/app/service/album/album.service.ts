@@ -15,7 +15,7 @@ export class AlbumService {
   getAllAlbums() {
     var headers = this.userService.getHeaders();
     return this.http.get(
-      `${environment.API_URL}/api/albums`, {headers}
+      `${environment.API_URL}/albums`, {headers}
       );
   }
 
